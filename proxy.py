@@ -8,23 +8,27 @@ def main():
 	with open('ListOfSites.txt','r+') as f:
 		for line in f:
 			i = i + 1
+			number = str(i)
 			url = line
 			data = urllib2.urlopen(url).read()
 			bs =BeautifulSoup(data,"lxml")
-			print bs.title
+			while True:
+						try:
+							print bs.title
 
-			number = str(i)
-	    	
-			if(bs.title == "<title>Trend Micro InterScan Web Security Event</title>"):
-				with open(fname, 'a') as outf:
-	        			#outf.write(i)
-	        			outf.write(number + ' is Banned\n')
+										    	
+							with open(fname, 'a') as outf :
+						        			#outf.write(i)
+					       				outf.write(number + ' can be opened\n')
+					       				break
+				        
+				        	except urllib2.URLError:
+						        	#if(bs.title == "<title>Trend Micro InterScan Web Security Event</title>"):
+							with open(fname, 'a') as outf :
+			        			#outf.write(i)
+					        			outf.write(number + ' is Banned\n')
+					        			break
 
-			else:
-				with open(fname, 'a') as outf:
-	        			#outf.write(i)
-	        			outf.write(number + ' can be opened\n')
-
-
+					
 if __name__=="__main__":
 	main()
