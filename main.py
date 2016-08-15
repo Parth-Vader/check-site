@@ -23,7 +23,7 @@ def main():
 				       			break
 				        
 				except URLError:
-					break 	#if(bs.title == "<title>Trend Micro InterScan Web Security Event</title>"):
+					#break 	#if(bs.title == "<title>Trend Micro InterScan Web Security Event</title>"):
 					with open(fname, 'a') as outf:
 			       			#outf.write(i)
  				   			outf.write(number + ' is Banned\n')
